@@ -16,6 +16,10 @@
                     $user = $this->m->login($username, $mdp, $role);
                     
                     if ($user){
+                        session_start();
+                        $_SESSION['user']=$user;
+                        $_SESSION['role']=$role;
+
                         switch($role){
                             case "admin":
                                 header("Location: ViewAdmin.php");
@@ -45,6 +49,6 @@
         }
     }
 $ctrl = new ctrl();
-$action = isset($_GET['action']);// ? $_GET['action'] : 'login';
+$action = isset($_GET['action']) ? $_GET['action'] : 'login';
 $ctrl->action($action);
 ?>
