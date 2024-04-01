@@ -72,6 +72,23 @@
             }
         }
         
+        public function addEmploiFiliereAction(){
+            if (isset([$_POST['filiere'],$_POST['jour_semaine'],$_POST['heure_debut'],$_POST['heure_fin'],$_POST['Id_salle'],$_POST['Id_Enseignant'],$_POST['matiere']])){
+                $emp=array(
+                    $_POST['filiere'],
+                    $_POST['jour_semaine'],
+                    $_POST['heure_debut'],
+                    $_POST['heure_fin'],
+                    $_POST['Id_salle'],
+                    $_POST['Id_Enseignant'],
+                    $_POST['matiere']
+                );
+                $this->m->addEmploiFiliere($emp);
+                header("location: ViewAdmin.php");
+                exit();
+            }
+        }
+
         public function action($action){
             switch($action){
                 case "login":

@@ -31,6 +31,16 @@
         public function addEmploiFiliere($emp){
             $query=$this->DB->prepare('INSERT INTO emploi_filiere (filiere, jour_semaine, heure_debut, heure_fin, Id_salle, Id_Enseignant, matiere) VALUES (?,?,?,?,?,?,?) ');
             $query->execute([$emp[0],$emp[1],$emp[2],$emp[3],$emp[4],$emp[5],$emp[6]]);
-        }  
+        }
+        public function AllEnseignant(){
+            $query=$this->DB->prepare('SELECT * FROM enseignant');
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+        public function AllEtudiant(){
+            $query=$this->DB->prepare('SELECT * FROM etudiant');
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } 
     }
 ?>
