@@ -1,3 +1,20 @@
+<?php
+    session_start();
+
+    // Check if user is logged in as admin
+    if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+        // User is logged in as admin
+        // Retrieve user information
+        $user = $_SESSION['user'];
+
+        // Your admin page content here
+    } else {
+        // Redirect to login page or show access denied message
+        header("Location: login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +23,10 @@
     <title>Dashbord</title>
 </head>
 <body>
-    <h1>L3ZZZZ</h1>
+<h1>Bienvenue, <?php echo $user['Nom'] . ' ' . $user['Prenom']; ?></h1>
+    <p>Ajouter un etudiant</p>
+    <a href="FormAddEtudiant.php"><img src="add.png"></a>
+    <p>Ajouter un enseignant</p>
+    <a href="FormAddEnseignant.php"><img src="add.png"></a>
 </body>
 </html>

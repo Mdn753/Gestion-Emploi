@@ -16,6 +16,10 @@
                     $user = $this->m->login($username, $mdp, $role);
                     
                     if ($user){
+                        session_start();
+                        $_SESSION['user']=$user;
+                        $_SESSION['role']=$role;
+
                         switch($role){
                             case "admin":
                                 header("Location: ViewAdmin.php");
@@ -35,16 +39,54 @@
                 }
             }
         }
+
+        public function addEtudiantAction(){
+            if (isset($_POST['Id_Etudiant'],$_POST['Nom'],$_POST['Prenom'],$_POST['filiere'],$_POST['Email'],$_POST['MDP'])){
+                $etu=array(
+                    $_POST['Id_Etudiant'],
+                    $_POST['Nom'],
+                    $_POST['Prenom'],
+                    $_POST['filiere'],
+                    $_POST['Email'],
+                    $_POST['MDP']
+                );
+                $this->m->addEtudiant($etu);
+                header("location: ViewAdmin.php");
+                exit();
+            }
+        }
+
+        public function addEnseignantAction(){
+            if(isset($_POST['Id_Enseignant'],$_POST['Nom'],$_POST['Prenom'],$_POST['matiere'],$_POST['Email'],$_POST['MDP'])){
+                $ens=array(
+                    $_POST['Id_Enseignant'],
+                    $_POST['Nom'],
+                    $_POST['Prenom'],
+                    $_POST['matiere'],
+                    $_POST['Email'],
+                    $_POST['MDP']
+                );
+                $this->m->addEnseignant($ens);
+                header("location: ViewAdmin.php");
+                exit();
+            }
+        }
         
         public function action($action){
             switch($action){
                 case "login":
                     $this->loginAction();
                     break;
+                case "addEtudiant":
+                    $this->addEtudiantAction();
+                    break;
+                case "addEnseignant":
+                    $this->addEnseignantAction();
+                    break;
             }
         }
     }
 $ctrl = new ctrl();
-$action = isset($_GET['action']);// ? $_GET['action'] : 'login';
+$action = isset($_GET['action']) ? $_GET['action'] : 'login';
 $ctrl->action($action);
 ?>
