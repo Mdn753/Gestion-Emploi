@@ -23,6 +23,10 @@
     <title>Dashbord</title>
 </head>
 <body>
-    <h1>L3ZZZZ</h1>
+<h1>Bienvenue, <?php echo $user['Nom'] . ' ' . $user['Prenom']; ?></h1>
+    <p>Ajouter un etudiant</p>
+    <a href="FormAddEtudiant.php"><img src="add.png"></a>
+    <p>Ajouter un enseignant</p>
+    <a href="FormAddEnseignant.php"><img src="add.png"></a>
 </body>
 </html>
