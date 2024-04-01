@@ -77,5 +77,9 @@
     <a href="FormAddEtudiant.php"><img src="add.png"></a>
     <p>Ajouter un enseignant</p>
     <a href="FormAddEnseignant.php"><img src="add.png"></a>
+    <p>Ajouter un emploi de temps</p>
+    <a href="FormAddEmploi.php"><img src="emploi.png"></a>
+    <p>Les salles occupes</p>
+    <a href="Salle_occupe.php"><img src="salle.png"></a>
 </body>
 </html>
