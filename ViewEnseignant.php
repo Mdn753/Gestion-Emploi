@@ -6,6 +6,7 @@
         // User is logged in as admin
         // Retrieve user information
         $user = $_SESSION['user'];
+        
 
         // Your admin page content here
     } else {

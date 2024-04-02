@@ -41,6 +41,16 @@
             $query=$this->DB->prepare('SELECT * FROM etudiant');
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
-        } 
+        }
+        public function getEmploiFiliere($filiere){
+            $query=$this->DB->prepare('SELECT * FROM emploi_filiere WHERE filiere=?');
+            $query->execute([$filiere]);
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+        public function getEmploiEnseignant($Id_Enseignant){
+            $query=$this->DB->prepare('SELECT * FROM emploi_enseignant WHERE Id_Enseignant=?');
+            $query->execute([$Id_Enseignant]);
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 ?>
